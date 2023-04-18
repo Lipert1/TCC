@@ -20,3 +20,13 @@ export async function getRemedios(req, res) {
     return res.status(400).json()
   }
 }
+
+export async function baixaRemedio(req, res) {
+  try {
+    
+  } catch (error) {
+    
+  }
+}
+
+//export async function updateRemedio()
