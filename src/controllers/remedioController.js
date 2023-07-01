@@ -34,6 +34,8 @@ export async function getRemedio(id, res) {
 //TODO: 
 export async function baixaRemedio(req, res) {
   try {
+    // não apagar do banco, apenas modificar o status dele para USED 
+    //e colocar o nome/id do paciente que foi destinado
     console.log(req)
     
   } catch (error) {
