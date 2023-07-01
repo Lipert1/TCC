@@ -21,12 +21,24 @@ export async function getRemedios(req, res) {
   }
 }
 
+export async function getRemedio(id, res) {
+  try {
+    const remedio = await RemedioModel.findById(id)
+
+    return res.status(200).json(remedio)
+  } catch (error) {
+    return res.status(400).json()
+  }
+}
+
+//TODO: 
 export async function baixaRemedio(req, res) {
   try {
+    console.log(req)
     
   } catch (error) {
     
   }
 }
 
-//export async function updateRemedio()
+//TODO: export async function updateRemedio()

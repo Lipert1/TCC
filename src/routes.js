@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createRemedio, getRemedios } from "./controllers/remedioController.js";
+import { createRemedio, getRemedio, getRemedios } from "./controllers/remedioController.js";
 import { body, validationResult } from "express-validator";
 
 const router = Router();
@@ -8,7 +8,19 @@ export default router
   .get("/test", (req, res) => {
     res.status(200).send("API Working ✅");
   })
+
   .get("/remedio", getRemedios)
+
+  .get("/remedioByID/:id", (req, res) => {
+    const id = req.params.id
+
+    if (!id) {
+      return res.status(400).json({ errors: "Missing ID param !!" });
+    }
+
+    getRemedio(id, res);
+  })
+
   .post(
     "/remedio",
 
