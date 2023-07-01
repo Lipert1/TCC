@@ -9,9 +9,9 @@ export default router
     res.status(200).send("API Working ✅");
   })
 
-  .get("/remedio", getRemedios)
+  .get("/getRemedios", getRemedios)
 
-  .get("/remedioByID/:id", (req, res) => {
+  .get("/getRemedio/:id", (req, res) => {
     const id = req.params.id
 
     if (!id) {
@@ -22,7 +22,7 @@ export default router
   })
 
   .post(
-    "/remedio",
+    "/createRemedio",
 
     body("nome").isString().withMessage("O nome é obrigatório"),
     body("dataVencimento")
