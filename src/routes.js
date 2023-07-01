@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createRemedio, getRemedio, getRemedios } from "./controllers/remedioController.js";
+import { createRemedio, getRemedio, getRemedios, baixaRemedio } from "./controllers/remedioController.js";
 import { body, validationResult } from "express-validator";
 
 const router = Router();
@@ -45,4 +45,21 @@ export default router
 
       createRemedio(req, res);
     }
-  );
+  )
+
+  .post(
+    "/baixaRemedio",
+
+    body("status").isString().withMessage("O status é obrigatório"),
+    body("paciente").isString().withMessage("O paciente é obrigatório"),
+
+    (req, res) => {
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+
+      baixaRemedio(req, res);
+    }
+  )

@@ -11,7 +11,7 @@ export async function createRemedio(req, res) {
   }
 }
 
-export async function getRemedios(req, res) {
+export async function getRemedios(res) {
   try {
     const remedios = await RemedioModel.find()
 
@@ -31,16 +31,20 @@ export async function getRemedio(id, res) {
   }
 }
 
-//TODO: 
 export async function baixaRemedio(req, res) {
   try {
-    // não apagar do banco, apenas modificar o status dele para USED 
-    //e colocar o nome/id do paciente que foi destinado
-    console.log(req)
-    
+    const query = {'_id': req.body.id};
+
+    const newRemedio = await RemedioModel.updateOne(query, { 
+      status: "USED",
+      paciente: req.body.paciente
+    })
+
+    return res.status(200).json(newRemedio)
   } catch (error) {
-    
+    return res.status(400).json()
   }
 }
 
-//TODO: export async function updateRemedio()
+//TODO: export async function verifyRemediosVencidos()
+// fazer isso na api ou em um lambda separado

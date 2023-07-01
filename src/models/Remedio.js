@@ -9,6 +9,7 @@ const remedioSchema = new Schema(
     estoque: String,
     dataInclusao: String,
     receita: Boolean,
+    paciente: String
   },
   {
     timestamps: true,
