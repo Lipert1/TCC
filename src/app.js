@@ -4,7 +4,6 @@ import db from "../config/db.js";
 import Logger from "../config/logger.js";
 import morgan from "morgan";
 import expressListEndpoints from 'express-list-endpoints';
-import chalk from 'chalk';
 
 const app = express();
 const port = 3000;
