@@ -1,17 +1,18 @@
 import { Router } from "express";
 import { createRemedio, getRemedio, getRemedios, baixaRemedio } from "./controllers/remedioController.js";
 import { body, validationResult } from "express-validator";
+import { isLoggedIn } from "./middlewares/authMiddleware.js";
 
 const router = Router();
 
 export default router
-  .get("/test", (req, res) => {
+  .get("/test", isLoggedIn, (req, res) => {
     res.status(200).send("API Working ✅");
   })
 
-  .get("/getRemedios", getRemedios)
+  .get("/getRemedios", isLoggedIn, getRemedios)
 
-  .get("/getRemedio/:id", (req, res) => {
+  .get("/getRemedio/:id", isLoggedIn, (req, res) => {
     const id = req.params.id
 
     if (!id) {
@@ -23,6 +24,7 @@ export default router
 
   .post(
     "/createRemedio",
+    isLoggedIn, 
 
     body("nome").isString().withMessage("O nome é obrigatório"),
     body("dataVencimento")
@@ -49,6 +51,7 @@ export default router
 
   .post(
     "/baixaRemedio",
+    isLoggedIn, 
 
     body("status").isString().withMessage("O status é obrigatório"),
     body("paciente").isString().withMessage("O paciente é obrigatório"),

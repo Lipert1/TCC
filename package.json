@@ -9,10 +9,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-list-endpoints": "^6.0.0",
     "express-validator": "^6.15.0",
+    "jsonwebtoken": "^9.0.0",
+    "mercedlogger": "^1.0.1",
     "mongoose": "^7.0.2",
     "morgan": "^1.10.0",
     "winston": "^3.8.2"
